@@ -51,9 +51,11 @@
             // 
             groupBox1.Controls.Add(dataGridView);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(12, 132);
+            groupBox1.Location = new Point(14, 176);
+            groupBox1.Margin = new Padding(3, 4, 3, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 306);
+            groupBox1.Padding = new Padding(3, 4, 3, 4);
+            groupBox1.Size = new Size(887, 408);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách loại sản phẩm";
@@ -66,20 +68,24 @@
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new DataGridViewColumn[] { ID, TenLoai });
             dataGridView.Dock = DockStyle.Fill;
-            dataGridView.Location = new Point(3, 25);
+            dataGridView.Location = new Point(3, 31);
+            dataGridView.Margin = new Padding(3, 4, 3, 4);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
-            dataGridView.Size = new Size(770, 278);
+            dataGridView.RowHeadersWidth = 51;
+            dataGridView.Size = new Size(881, 373);
             dataGridView.TabIndex = 0;
             // 
             // ID
             // 
             ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
             ID.Name = "ID";
             // 
             // TenLoai
             // 
             TenLoai.HeaderText = "Tên loại sản phẩm";
+            TenLoai.MinimumWidth = 6;
             TenLoai.Name = "TenLoai";
             // 
             // groupBox2
@@ -93,9 +99,11 @@
             groupBox2.Controls.Add(txtTenLoai);
             groupBox2.Controls.Add(label2);
             groupBox2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(12, 19);
+            groupBox2.Location = new Point(14, 25);
+            groupBox2.Margin = new Padding(3, 4, 3, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(776, 97);
+            groupBox2.Padding = new Padding(3, 4, 3, 4);
+            groupBox2.Size = new Size(887, 129);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin loại sản phẩm";
@@ -105,9 +113,10 @@
             // 
             btnThoat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThoat.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThoat.Location = new Point(675, 53);
+            btnThoat.Location = new Point(771, 71);
+            btnThoat.Margin = new Padding(3, 4, 3, 4);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(80, 34);
+            btnThoat.Size = new Size(91, 45);
             btnThoat.TabIndex = 16;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
@@ -116,9 +125,10 @@
             // 
             btnHuyBo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnHuyBo.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnHuyBo.Location = new Point(575, 53);
+            btnHuyBo.Location = new Point(657, 71);
+            btnHuyBo.Margin = new Padding(3, 4, 3, 4);
             btnHuyBo.Name = "btnHuyBo";
-            btnHuyBo.Size = new Size(80, 34);
+            btnHuyBo.Size = new Size(91, 45);
             btnHuyBo.TabIndex = 15;
             btnHuyBo.Text = "Hủy bỏ";
             btnHuyBo.UseVisualStyleBackColor = true;
@@ -129,9 +139,10 @@
             btnLuu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnLuu.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLuu.ForeColor = Color.FromArgb(0, 192, 192);
-            btnLuu.Location = new Point(475, 53);
+            btnLuu.Location = new Point(543, 71);
+            btnLuu.Margin = new Padding(3, 4, 3, 4);
             btnLuu.Name = "btnLuu";
-            btnLuu.Size = new Size(80, 34);
+            btnLuu.Size = new Size(91, 45);
             btnLuu.TabIndex = 14;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = true;
@@ -142,9 +153,10 @@
             btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnXoa.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnXoa.ForeColor = Color.Red;
-            btnXoa.Location = new Point(375, 53);
+            btnXoa.Location = new Point(429, 71);
+            btnXoa.Margin = new Padding(3, 4, 3, 4);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(80, 34);
+            btnXoa.Size = new Size(91, 45);
             btnXoa.TabIndex = 13;
             btnXoa.Text = "Xóa";
             btnXoa.UseVisualStyleBackColor = true;
@@ -154,9 +166,10 @@
             // 
             btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnSua.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSua.Location = new Point(275, 53);
+            btnSua.Location = new Point(314, 71);
+            btnSua.Margin = new Padding(3, 4, 3, 4);
             btnSua.Name = "btnSua";
-            btnSua.Size = new Size(80, 34);
+            btnSua.Size = new Size(91, 45);
             btnSua.TabIndex = 12;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
@@ -166,9 +179,10 @@
             // 
             btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThem.Location = new Point(175, 53);
+            btnThem.Location = new Point(200, 71);
+            btnThem.Margin = new Padding(3, 4, 3, 4);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(80, 34);
+            btnThem.Size = new Size(91, 45);
             btnThem.TabIndex = 11;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
@@ -176,28 +190,30 @@
             // 
             // txtTenLoai
             // 
-            txtTenLoai.Location = new Point(175, 19);
+            txtTenLoai.Location = new Point(200, 25);
+            txtTenLoai.Margin = new Padding(3, 4, 3, 4);
             txtTenLoai.Name = "txtTenLoai";
-            txtTenLoai.Size = new Size(580, 29);
+            txtTenLoai.Size = new Size(662, 34);
             txtTenLoai.TabIndex = 10;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(21, 26);
+            label2.Location = new Point(24, 35);
             label2.Name = "label2";
-            label2.Size = new Size(148, 20);
+            label2.Size = new Size(188, 25);
             label2.TabIndex = 9;
             label2.Text = "Tên loại sản phẩm(*):";
             // 
             // frmLoaiSanPham
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmLoaiSanPham";
             Text = "frmLoaiSanPham";
             Load += frmLoaiSanPham_Load;
