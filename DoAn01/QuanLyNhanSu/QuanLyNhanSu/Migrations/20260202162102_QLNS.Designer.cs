@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuanLyNhanSu.Data;
 
@@ -11,16 +12,18 @@ using QuanLyNhanSu.Data;
 namespace QuanLyNhanSu.Migrations
 {
     [DbContext(typeof(QLNhanSuDbContext))]
-    partial class QLNhanSuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260202162102_QLNS")]
+    partial class QLNS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.12")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "9.0.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
             modelBuilder.Entity("QuanLyNhanSu.Data.BaoHiem", b =>
                 {
@@ -28,21 +31,21 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("MaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("Ngay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NhanVienMaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("TinhTrang")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 
@@ -57,21 +60,21 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("MaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("Ngay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NhanVienMaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("TinhTrang")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 
@@ -83,11 +86,11 @@ namespace QuanLyNhanSu.Migrations
             modelBuilder.Entity("QuanLyNhanSu.Data.ChucVu", b =>
                 {
                     b.Property<string>("MaCV")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("TenCv")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaCV");
 
@@ -97,11 +100,11 @@ namespace QuanLyNhanSu.Migrations
             modelBuilder.Entity("QuanLyNhanSu.Data.HopDong", b =>
                 {
                     b.Property<string>("MaHD")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("ChucVuMaCV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("HeSoLuong")
                         .HasColumnType("int");
@@ -111,18 +114,18 @@ namespace QuanLyNhanSu.Migrations
 
                     b.Property<string>("MaCV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaPB")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("NgayVaoLam")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PhongBanMaPB")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("MaHD");
 
@@ -141,7 +144,7 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HeSoLuong"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("HeSoLuong"));
 
                     b.Property<int>("LuongCB")
                         .HasColumnType("int");
@@ -154,67 +157,67 @@ namespace QuanLyNhanSu.Migrations
             modelBuilder.Entity("QuanLyNhanSu.Data.NhanVien", b =>
                 {
                     b.Property<string>("MaNhanVien")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("DienThoai")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("GioiTinh")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<int>("HeSoLuong")
                         .HasColumnType("int");
 
                     b.Property<string>("Hinh")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("HopDongMaHD")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int>("LuongHeSoLuong")
                         .HasColumnType("int");
 
                     b.Property<string>("MaHD")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaPB")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("NgaySinh")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("PhongBanMaPB")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("SoCM")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TTHonNhan")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TenNV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TrinhDoHV")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaNhanVien");
 
@@ -230,11 +233,11 @@ namespace QuanLyNhanSu.Migrations
             modelBuilder.Entity("QuanLyNhanSu.Data.PhongBan", b =>
                 {
                     b.Property<string>("MaPB")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("TenPB")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaPB");
 
@@ -247,27 +250,27 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime?>("DenNgay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("LoaiPC")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NhanVienMaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("Tien")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("TuNgay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("ID");
 
@@ -279,23 +282,23 @@ namespace QuanLyNhanSu.Migrations
             modelBuilder.Entity("QuanLyNhanSu.Data.Taikhoan", b =>
                 {
                     b.Property<string>("TenDangNhap")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("MaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MatKhau")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NhanVienMaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("TenQuyenHan")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("TenDangNhap");
 
@@ -310,24 +313,24 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Loai")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("LyDo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("Ngay")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NhanVienMaNhanVien")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<int?>("Tien")
                         .HasColumnType("int");
@@ -345,28 +348,28 @@ namespace QuanLyNhanSu.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("ChucVuMaCV")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("LyDo")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaCV")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("MaNhanVien")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("NgayBatDau")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("NgayKetThuc")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NhanVienMaNhanVien")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255)");
 
                     b.HasKey("ID");
 
@@ -382,7 +385,7 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("BaoHiem")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
@@ -393,7 +396,7 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("ChamCong")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
@@ -404,19 +407,19 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.ChucVu", "ChucVu")
                         .WithMany("HopDong")
                         .HasForeignKey("ChucVuMaCV")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("QuanLyNhanSu.Data.Luong", "Luong")
                         .WithMany("HopDong")
                         .HasForeignKey("LuongHeSoLuong")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("QuanLyNhanSu.Data.PhongBan", "PhongBan")
                         .WithMany("HopDong")
                         .HasForeignKey("PhongBanMaPB")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ChucVu");
@@ -431,19 +434,19 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.HopDong", "HopDong")
                         .WithMany("NhanVien")
                         .HasForeignKey("HopDongMaHD")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("QuanLyNhanSu.Data.Luong", "Luong")
                         .WithMany("NhanVien")
                         .HasForeignKey("LuongHeSoLuong")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("QuanLyNhanSu.Data.PhongBan", "PhongBan")
                         .WithMany("NhanVien")
                         .HasForeignKey("PhongBanMaPB")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("HopDong");
@@ -458,7 +461,7 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("PhuCap")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
@@ -469,7 +472,7 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("Taikhoan")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
@@ -480,7 +483,7 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("ThuongPhat")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("NhanVien");
@@ -491,12 +494,12 @@ namespace QuanLyNhanSu.Migrations
                     b.HasOne("QuanLyNhanSu.Data.ChucVu", "ChucVu")
                         .WithMany("ctChucVu")
                         .HasForeignKey("ChucVuMaCV")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("QuanLyNhanSu.Data.NhanVien", "NhanVien")
                         .WithMany("ctChucVu")
                         .HasForeignKey("NhanVienMaNhanVien")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ChucVu");
 

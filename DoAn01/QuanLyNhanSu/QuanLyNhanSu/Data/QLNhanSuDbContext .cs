@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace QuanLyNhanSu.Data
 {
@@ -23,8 +24,17 @@ namespace QuanLyNhanSu.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=QlNhanSu_V1;Integrated Security=True;TrustServerCertificate=True");
+            if (!optionsBuilder.IsConfigured)
+            {
+                string conn = ConfigurationManager
+                    .ConnectionStrings["QLBHConnection"]
+                    .ConnectionString;
+
+                optionsBuilder.UseMySql(
+                    conn,
+                    new MySqlServerVersion(new Version(8, 0, 34))
+                );
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,11 +45,15 @@ namespace QuanLyNhanSu.Data
             modelBuilder.Entity<HopDong>().HasKey(e => e.MaHD);
             modelBuilder.Entity<NhanVien>().HasKey(e => e.MaNhanVien);
             modelBuilder.Entity<Taikhoan>().HasKey(e => e.TenDangNhap);
-            // Tắt chế độ tự động xóa (Cascade Delete) trên bảng NhanVien
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+
+            // Tắt cascade delete (MySQL hay lỗi)
+            foreach (var fk in modelBuilder.Model
+                         .GetEntityTypes()
+                         .SelectMany(e => e.GetForeignKeys()))
             {
-                relationship.DeleteBehavior = DeleteBehavior.NoAction;
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
             }
         }
     }
 }
+

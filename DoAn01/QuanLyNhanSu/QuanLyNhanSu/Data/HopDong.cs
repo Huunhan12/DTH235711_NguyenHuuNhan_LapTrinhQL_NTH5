@@ -20,4 +20,3 @@ namespace QuanLyNhanSu.Data
         public virtual ICollection<NhanVien> NhanVien { get; set; } = new List<NhanVien>();
     }
 }
-

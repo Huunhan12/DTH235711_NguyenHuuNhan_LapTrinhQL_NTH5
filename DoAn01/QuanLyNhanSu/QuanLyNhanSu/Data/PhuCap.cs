@@ -17,4 +17,3 @@ namespace QuanLyNhanSu.Data
         public virtual NhanVien NhanVien { get; set; } = null!;
     }
 }
-

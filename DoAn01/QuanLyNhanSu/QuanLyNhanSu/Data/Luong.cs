@@ -10,9 +10,7 @@ namespace QuanLyNhanSu.Data
     {
         public int HeSoLuong { get; set; }
         public int LuongCB { get; set; }
-
         public virtual ICollection<HopDong> HopDong { get; set; } = new List<HopDong>();
         public virtual ICollection<NhanVien> NhanVien { get; set; } = new List<NhanVien>();
     }
 }
-

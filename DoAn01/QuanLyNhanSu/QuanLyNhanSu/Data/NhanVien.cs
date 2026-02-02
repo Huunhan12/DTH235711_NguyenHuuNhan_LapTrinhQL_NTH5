@@ -34,5 +34,4 @@ namespace QuanLyNhanSu.Data
         public virtual ICollection<BaoHiem> BaoHiem { get; set; } = new List<BaoHiem>();
         public virtual ICollection<PhuCap> PhuCap { get; set; } = new List<PhuCap>();
     }
-
 }
