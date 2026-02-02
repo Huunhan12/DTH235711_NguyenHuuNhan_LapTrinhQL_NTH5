@@ -12,15 +12,15 @@ using QuanLyNhanSu.Data;
 namespace QuanLyNhanSu.Migrations
 {
     [DbContext(typeof(QLNhanSuDbContext))]
-    [Migration("20260125031021_SuaLoiCascade")]
-    partial class SuaLoiCascade
+    [Migration("20260129115912_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.10")
+                .HasAnnotation("ProductVersion", "9.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

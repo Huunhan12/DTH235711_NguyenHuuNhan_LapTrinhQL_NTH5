@@ -19,4 +19,3 @@ namespace QuanLyBanHang.Data
         public virtual ObservableCollectionListSource<HoaDon> HoaDon { get; } = new();
     }
 }
-

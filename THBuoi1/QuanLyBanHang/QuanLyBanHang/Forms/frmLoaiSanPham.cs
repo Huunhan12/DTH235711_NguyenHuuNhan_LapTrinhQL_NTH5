@@ -1,5 +1,4 @@
-﻿using QuanLyBanHang.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,49 +7,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyBanHang.Data;
 
-namespace QuanLyBanHang.form
+namespace QuanLyBanHang.Forms
 {
     public partial class frmLoaiSanPham : Form
     {
-        QLBHDbContext context = new QLBHDbContext();  // Khởi tạo biến ngữ cảnh CSDL
-        bool xuLyThem = false;  // Kiểm tra có nhấn vào nút Thêm hay không?
-        int id;
+        QLBHDbContext context = new QLBHDbContext(); // Khởi tạo biến ngữ cảnh CSDL
+        bool xuLyThem = false;                       // Kiểm tra có nhấn vào nút Thêm hay không?
+        int id;                                      // Lấy mã loại sản phẩm (Sửa / Xóa)
+        public frmLoaiSanPham()
+        {
+            InitializeComponent();
+        }
         private void BatTatChucNang(bool giaTri)
         {
             btnLuu.Enabled = giaTri;
             btnHuyBo.Enabled = giaTri;
             txtTenLoai.Enabled = giaTri;
+
             btnThem.Enabled = !giaTri;
             btnSua.Enabled = !giaTri;
             btnXoa.Enabled = !giaTri;
         }
-        public frmLoaiSanPham()
-        {
-            InitializeComponent();
-        }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        // 🔽 VIẾT HÀM LOAD Ở ĐÂY
         private void frmLoaiSanPham_Load(object sender, EventArgs e)
         {
             BatTatChucNang(false);
-            List<LoaiSanPham> lsp = new List<LoaiSanPham>();
-            lsp = context.LoaiSanPham.ToList();
+
+            List<LoaiSanPham> lsp = context.LoaiSanPham.ToList();
+
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = lsp;
-            txtTenLoai.DataBindings.Clear();
-            txtTenLoai.DataBindings.Add("Text", bindingSource, "TenLoai", false, DataSourceUpdateMode.Never);
-            dataGridView.DataSource = bindingSource;
 
+            txtTenLoai.DataBindings.Clear();
+            txtTenLoai.DataBindings.Add(
+                "Text",
+                bindingSource,
+                "TenLoai",
+                false,
+                DataSourceUpdateMode.Never
+            );
+
+            dataGridView.DataSource = bindingSource;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -65,22 +65,6 @@ namespace QuanLyBanHang.form
             xuLyThem = false;
             BatTatChucNang(true);
             id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Xác nhận xóa loại sản phẩm?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
-                LoaiSanPham lsp = context.LoaiSanPham.Find(id);
-                if (lsp != null)
-                {
-                    context.LoaiSanPham.Remove(lsp);
-                }
-                context.SaveChanges();
-                frmLoaiSanPham_Load(sender, e);
-
-            }
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -108,13 +92,31 @@ namespace QuanLyBanHang.form
                 }
                 frmLoaiSanPham_Load(sender, e);
             }
+        }
 
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Xác nhận xóa loại sản phẩm?", "Xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                id = Convert.ToInt32(dataGridView.CurrentRow.Cells["ID"].Value.ToString());
+                LoaiSanPham lsp = context.LoaiSanPham.Find(id);
+                if (lsp != null)
+                {
+                    context.LoaiSanPham.Remove(lsp);
+                }
+                context.SaveChanges();
+                frmLoaiSanPham_Load(sender, e);
+            }
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             frmLoaiSanPham_Load(sender, e);
-        
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace QuanLyBanHang.Data
 {
     public class SanPham
     {
+
         public int ID { get; set; }
         public int HangSanXuatID { get; set; }
         public int LoaiSanPhamID { get; set; }
@@ -21,5 +22,4 @@ namespace QuanLyBanHang.Data
         public virtual LoaiSanPham LoaiSanPham { get; set; } = null!;
         public virtual HangSanXuat HangSanXuat { get; set; } = null!;
     }
-} 
-
+}
