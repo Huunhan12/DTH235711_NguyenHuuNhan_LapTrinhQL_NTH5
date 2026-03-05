@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnXuat = new Button();
+            btnNhap = new Button();
             btnThoat = new Button();
             btnHuyBo = new Button();
             btnXoa = new Button();
@@ -48,6 +50,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnXuat);
+            groupBox1.Controls.Add(btnNhap);
             groupBox1.Controls.Add(btnThoat);
             groupBox1.Controls.Add(btnHuyBo);
             groupBox1.Controls.Add(btnXoa);
@@ -63,10 +67,32 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin loại sản phầm";
             // 
+            // btnXuat
+            // 
+            btnXuat.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnXuat.Location = new Point(1077, 78);
+            btnXuat.Name = "btnXuat";
+            btnXuat.Size = new Size(94, 29);
+            btnXuat.TabIndex = 7;
+            btnXuat.Text = "Xuất";
+            btnXuat.UseVisualStyleBackColor = true;
+            btnXuat.Click += btnXuat_Click;
+            // 
+            // btnNhap
+            // 
+            btnNhap.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnNhap.Location = new Point(949, 78);
+            btnNhap.Name = "btnNhap";
+            btnNhap.Size = new Size(94, 29);
+            btnNhap.TabIndex = 6;
+            btnNhap.Text = "Nhập…";
+            btnNhap.UseVisualStyleBackColor = true;
+            btnNhap.Click += btnNhap_Click;
+            // 
             // btnThoat
             // 
             btnThoat.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnThoat.Location = new Point(850, 78);
+            btnThoat.Location = new Point(821, 78);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(94, 29);
             btnThoat.TabIndex = 3;
@@ -77,7 +103,7 @@
             // btnHuyBo
             // 
             btnHuyBo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnHuyBo.Location = new Point(732, 78);
+            btnHuyBo.Location = new Point(693, 78);
             btnHuyBo.Name = "btnHuyBo";
             btnHuyBo.Size = new Size(94, 29);
             btnHuyBo.TabIndex = 3;
@@ -89,7 +115,7 @@
             // 
             btnXoa.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnXoa.ForeColor = Color.Red;
-            btnXoa.Location = new Point(601, 78);
+            btnXoa.Location = new Point(565, 78);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(94, 29);
             btnXoa.TabIndex = 3;
@@ -100,7 +126,7 @@
             // btnSua
             // 
             btnSua.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnSua.Location = new Point(460, 78);
+            btnSua.Location = new Point(437, 78);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(94, 29);
             btnSua.TabIndex = 3;
@@ -222,5 +248,7 @@
         private DataGridView dgvHangSanXuat;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn TenHangSanXuat;
+        private Button btnXuat;
+        private Button btnNhap;
     }
 }
