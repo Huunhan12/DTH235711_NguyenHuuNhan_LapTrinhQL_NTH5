@@ -341,7 +341,7 @@ namespace QuanLyBanHang.Forms
                 int margin = 20; // Lề trái
 
                 // --- PHẦN HEADER (Thông tin cửa hàng) ---
-                g.DrawString("CỬA HÀNG THIẾT BỊ IT VÕ VĂN TỶ", fontHeader, brush, margin, y);
+                g.DrawString("CỬA HÀNG THIẾT BỊ IT Nguyễn Hữu Nhân", fontHeader, brush, margin, y);
                 y += 25;
                 g.DrawString("Địa chỉ: Đại học An Giang, TP. Long Xuyên", fontBody, brush, margin, y);
                 y += 40;
